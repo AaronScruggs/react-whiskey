@@ -1,5 +1,7 @@
 import React from 'react';
 import TagList from '../TagList/TagList.jsx'
+import TagSearchPage from '../TagSearchPage/TagSearchPage.jsx';
+
 
 const rootApiUrl = 'https://evening-citadel-85778.herokuapp.com/';
 
@@ -28,10 +30,11 @@ class AppContainer extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div>
-        {this.state.tags && <TagList tags={this.state.tags} />}
+        {this.state.tags && <TagSearchPage tags={this.state.tags} rootApiUrl={rootApiUrl} />}
       </div>
     );
   }
