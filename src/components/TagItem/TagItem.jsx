@@ -7,7 +7,7 @@ class TagItem extends React.Component {
   render() {
     const title = this.props.tag.title;
     return (
-      <div>
+      <div className="tagBox">
         <div className={this.props.selected ? 'selectedTag': ''} onClick={() => this.props.tagSelector(title)}>
           {title}
         </div>

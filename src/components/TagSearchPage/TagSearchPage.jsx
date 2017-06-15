@@ -1,5 +1,6 @@
 import React from 'react';
 import TagList from '../TagList/TagList.jsx'
+import WhiskeyList from '../WhiskeyList/WhiskeyList.jsx';
 
 
 class TagSearchPage extends React.Component {
@@ -50,6 +51,7 @@ class TagSearchPage extends React.Component {
                  handleTagSelection={this.handleTagSelection}
         />
         <button onClick={this.tagSearch}>Search</button>
+        <WhiskeyList whiskies={this.state.whiskies}/>
       </div>
     );
   }

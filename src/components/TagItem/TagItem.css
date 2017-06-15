@@ -1,11 +1,15 @@
 
 li {
     display: inline-block;
-    margin: 5px;
-    border: solid 1px lightblue;
-    cursor: pointer;
 }
 
 .selectedTag {
     background: lightgray;
+}
+
+
+.tagBox {
+    margin: 5px;
+    border: solid 1px lightblue;
+    cursor: pointer;
 }
