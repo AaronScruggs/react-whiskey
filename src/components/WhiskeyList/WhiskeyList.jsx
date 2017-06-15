@@ -9,7 +9,13 @@ class WhiskeyList extends React.Component {
     return (
       <div>
         <ol>
-          {this.props.whiskies.map(whiskey => <li key={whiskey.id}> {whiskey.title} </li>)}
+          {this.props.whiskies.map(
+            whiskey => 
+              <li key={whiskey.id} className="whiskeyItem">
+                {whiskey.title} 
+              </li>
+          )
+          }
         </ol>
 
       </div>

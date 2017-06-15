@@ -1,5 +1,6 @@
 
 
-/*li {*/
-    /*border: red;*/
-/*}*/
+.whiskeyItem {
+    margin: 5px;
+    border: solid 1px lightcoral;
+}
