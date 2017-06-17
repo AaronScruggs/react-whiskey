@@ -1,6 +1,7 @@
 import React from 'react';
-import TagList from '../TagList/TagList.jsx'
 import TagSearchPage from '../TagSearchPage/TagSearchPage.jsx';
+import WhiskeyDetail from '../WhiskeyDetail/WhiskeyDetail.jsx';
+import { Switch, Route } from 'react-router-dom';
 
 
 const rootApiUrl = 'https://evening-citadel-85778.herokuapp.com/';
@@ -34,7 +35,10 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        {this.state.tags && <TagSearchPage tags={this.state.tags} rootApiUrl={rootApiUrl} />}
+        <Switch>
+          <Route exact path='/' component={TagSearchPage}/>
+          <Route path='/whiskey/:id' component={WhiskeyDetail}/>
+        </Switch>
       </div>
     );
   }
