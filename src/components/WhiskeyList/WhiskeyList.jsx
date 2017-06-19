@@ -12,7 +12,10 @@ class WhiskeyList extends React.Component {
           {this.props.whiskies.map(
             whiskey =>
               <li key={whiskey.id} className="whiskeyItem">
-                <a href={'/whiskey/' + whiskey.id}>{whiskey.title}</a>
+                <a href={'/whiskey/' + whiskey.id}>
+                  <li><img src={whiskey.detail_img_url} alt="Whiskey Image"></img></li>
+                  {whiskey.title}
+                </a>
               </li>
           )
           }

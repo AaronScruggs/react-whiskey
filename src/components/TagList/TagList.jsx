@@ -3,7 +3,6 @@ import TagItem from '../TagItem/TagItem.jsx'
 import styles from './TagList.css';
 
 
-
 class TagList extends React.Component {
 
   render() {

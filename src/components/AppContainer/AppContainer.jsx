@@ -1,6 +1,7 @@
 import React from 'react';
 import TagSearchPage from '../TagSearchPage/TagSearchPage.jsx';
 import WhiskeyDetail from '../WhiskeyDetail/WhiskeyDetail.jsx';
+import HeaderBar from '../HeaderBar/HeaderBar.jsx';
 import { Switch, Route } from 'react-router-dom';
 
 
@@ -35,6 +36,7 @@ class AppContainer extends React.Component {
   render() {
     return (
       <div>
+        <HeaderBar />
         <Switch>
           <Route exact path='/' component={TagSearchPage}/>
           <Route path='/whiskey/:id' component={WhiskeyDetail}/>

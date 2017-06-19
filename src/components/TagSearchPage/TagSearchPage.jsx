@@ -16,13 +16,10 @@ class TagSearchPage extends React.Component {
     this.handleTagSelection = this.handleTagSelection.bind(this);
     this.tagSearch = this.tagSearch.bind(this);
     this.getTagData = this.getTagData.bind(this);
+    this.requestTags = this.requestTags.bind(this);
   }
 
   componentWillMount() {
-    // this.setState({
-    //   selectedTags: [],
-    //   whiskies: []
-    // })
     this.getTagData();
   }
 
@@ -37,17 +34,26 @@ class TagSearchPage extends React.Component {
     this.setState({selectedTags: oldTags});
   }
 
-  getTagData () {
-    const url = rootApiUrl + 'tag/';
+  requestTags(url) {
     fetch(url, {headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       }}).then(response => {
     return response.json();
     }).then(data => {
-    this.setState({tags: data.results});
+    this.setState({tags: this.state.tags.concat(data.results)});
+      console.log('n ', data.next);
+      if(data.next){
+        return(this.requestTags(data.next));
+      }
     });
+  };
+
+  getTagData() {
+    var url = rootApiUrl + 'tag/';
+    this.requestTags(url);
   }
+
 
   tagSearch(){
     const url = rootApiUrl + 'shoot/?tags=' + this.state.selectedTags.join(',');
@@ -64,11 +70,13 @@ class TagSearchPage extends React.Component {
 
 
   render(){
+
     return (
       <div>
-        <TagList tags={this.state.tags}
-                 selectedTags={this.state.selectedTags}
-                 handleTagSelection={this.handleTagSelection}
+        <TagList
+          tags={this.state.tags}
+          selectedTags={this.state.selectedTags}
+          handleTagSelection={this.handleTagSelection}
         />
         <button onClick={this.tagSearch}>Search</button>
         <WhiskeyList whiskies={this.state.whiskies}/>
