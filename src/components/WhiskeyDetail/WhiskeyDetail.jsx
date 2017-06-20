@@ -1,5 +1,6 @@
 import React from 'react';
 import ComparableItem from '../ComparableItem/CompareableItem.jsx';
+import ReviewItem from '../ReviewItem/ReviewItem.jsx';
 import {rootApiUrl} from '../../Constants.jsx';
 
 
@@ -9,7 +10,8 @@ class WhiskeyDetail extends React.Component {
     super();
     this.state = {
       whiskey: {},
-      comparables: []
+      comparables: [],
+      reviews: []
     };
   }
 
@@ -27,7 +29,8 @@ class WhiskeyDetail extends React.Component {
       }).then(data => {
         this.setState({
           whiskey: data,
-          comparables: data.comparables
+          comparables: data.comparables,
+          reviews: data.reviews
         });
     });
   }
@@ -56,7 +59,15 @@ class WhiskeyDetail extends React.Component {
         </ol>
 
         <h3>Reviews</h3>
-
+        <ol>
+          {
+            this.state.reviews.map(review =>
+              <li key={review.id}>
+                <ReviewItem review={review}/>
+              </li>
+            )
+          }
+        </ol>
 
 
       </div>

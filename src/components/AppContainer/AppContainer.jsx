@@ -18,8 +18,7 @@ class AppContainer extends React.Component {
   componentWillMount () {
     this.getTagData();
   }
-
-
+  
   getTagData () {
     const url = rootApiUrl + 'tag/';
     fetch(url, {headers: {
