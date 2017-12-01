@@ -1,0 +1,19 @@
+.backdrop-style {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      zIndex: 9998;
+      background: rgba(0, 0, 0, 0.3);
+    padding-left: 30px;
+    overflow: auto;
+    }
+
+.backdrop-style ol {
+    padding-right: 30px;
+}
+
+.main-style {
+    padding-left: 30px;
+}

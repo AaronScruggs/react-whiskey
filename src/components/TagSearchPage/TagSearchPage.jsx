@@ -42,7 +42,6 @@ class TagSearchPage extends React.Component {
     return response.json();
     }).then(data => {
     this.setState({tags: this.state.tags.concat(data.results)});
-      console.log('n ', data.next);
       if(data.next){
         return(this.requestTags(data.next));
       }
