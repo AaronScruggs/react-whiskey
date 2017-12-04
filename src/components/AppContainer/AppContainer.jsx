@@ -4,6 +4,7 @@ import WhiskeyDetail from '../WhiskeyDetail/WhiskeyDetail.jsx';
 import HeaderBar from '../HeaderBar/HeaderBar.jsx';
 import SignInModal from '../SignInModal/SignInModal.jsx';
 import {Switch, Route} from 'react-router-dom';
+import {logIntoApi} from '../../services/api.jsx';
 import styles from './AppContainer.css';
 
 
