@@ -17,9 +17,11 @@ class AppContainer extends React.Component {
         this.state = {
             tags: [],
             isModalOpen: false,
+            loggedName: 'guest'
         };
         this.openSignInModal = this.openSignInModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.appLogIn = this.appLogIn.bind(this);
     }
 
     componentWillMount() {
@@ -57,6 +59,15 @@ class AppContainer extends React.Component {
         console.log('close modal', this.state);
     }
 
+    appLogIn(username, password) {
+        console.log('creds', this.state);
+        var r = logIntoApi(username, password);
+        console.log('r', r);
+        this.setState({
+            loggedName: username,
+            isModalOpen: false
+        })
+    }
 
     render() {
         return (
@@ -64,8 +75,8 @@ class AppContainer extends React.Component {
                 className={this.state.isModalOpen ? 'backdrop-style': 'main-style'}
                 // onClick={this.closeModal}
             >
-                <HeaderBar openSignInModal={this.openSignInModal}/>
-                <SignInModal isOpen={this.state.isModalOpen} closeModal={this.closeModal}/>
+                <HeaderBar openSignInModal={this.openSignInModal} loggedName={this.state.loggedName}/>
+                <SignInModal isOpen={this.state.isModalOpen} closeModal={this.closeModal} appLogIn={this.appLogIn}/>
                 <Switch>
                     <Route exact path='/' component={TagSearchPage}/>
                     <Route path='/whiskey/:id' component={WhiskeyDetail}/>

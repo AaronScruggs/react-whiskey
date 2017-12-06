@@ -26,8 +26,9 @@ class SignInModal extends React.Component {
     }
 
     submitLogin(){
-        console.log('creds', this.state);
-        logIntoApi(this.state.email, this.state.password);
+        // console.log('creds', this.state);
+        // logIntoApi(this.state.email, this.state.password);
+        this.props.appLogIn(this.state.email, this.state.password);
     }
 
     render() {

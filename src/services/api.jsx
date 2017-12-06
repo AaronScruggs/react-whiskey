@@ -2,6 +2,17 @@ import React from 'react';
 import {rootApiUrl} from '../Constants.jsx';
 
 
+export function apiResponse(response){
+    console.log(response.ok);
+    if (!response.ok) {
+            return false;
+        }
+    else{
+        return response.json();
+    }
+
+}
+
 export function logIntoApi(username, password) {
     var url = rootApiUrl + 'api-token-auth/';
     var credentials = {
@@ -17,9 +28,12 @@ export function logIntoApi(username, password) {
             method: 'POST',
             body: JSON.stringify(credentials)
 
-        }).then(response => {
-        return response.json();
-    }).then(data => {
-        localStorage.setItem('token', data.token);
+        }).then(apiResponse).then(function(data) {
+        if(data){
+            localStorage.setItem('token', data.token);
+        }
+        else{
+            console.log('bad creds');
+        }
     })
 }
